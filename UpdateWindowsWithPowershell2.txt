@@ -1,0 +1,11 @@
+# PowerShell script to install Windows Updates
+# Works on all Windows machines past Windows 7
+# https://www.petri.com/manage-windows-updates-with-powershell-module
+# 1) Download and Extract PSWindowsUpdate contets to C:\Windows\System32\WindowsPowerShell\v1.0\Modules
+# 2) Open PowerShell (admin)
+
+Set-ExecutionPolicy RemoteSigned
+Import-Module PSWindowsUpdate
+# Add-WUServiceManager -ServiceID 7971f918-a847-4430-9279-4a52d1efe18d
+$KBList = "KB890830","KB4524445","KB4534309","KB4516115","KB3185319","KB4486105","KB4532940"
+Get-WUInstall -KBArticleID $KBList -AcceptAll -AutoReboot
